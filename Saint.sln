@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{A2FD7115-0817-4F6B-BB8E-21B6D762DD12}"
+	ProjectSection(SolutionItems) = preProject
+		Index.html = Index.html
+		Info.html = Info.html
+		Script1.js = Script1.js
+		StyleSheet.css = StyleSheet.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "photo", "photo", "{0131A9F6-6EA2-480C-B458-8963D8546942}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "novodevichie", "novodevichie", "{C12A01C1-139E-4F2B-ACD7-6056B6D9686D}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0131A9F6-6EA2-480C-B458-8963D8546942} = {A2FD7115-0817-4F6B-BB8E-21B6D762DD12}
+		{C12A01C1-139E-4F2B-ACD7-6056B6D9686D} = {0131A9F6-6EA2-480C-B458-8963D8546942}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CE54E85-16E5-4B4F-8C20-F822EB9B5FF5}
+	EndGlobalSection
+EndGlobal
