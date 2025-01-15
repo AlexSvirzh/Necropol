@@ -1,0 +1,2 @@
+https://msiter.ru/tutorials/css-srednego-urovnya/psevdoklassy - поведение при действие с элементом
+https://msiter.ru/tutorials/css-prodvinutogo-urovnya/psevdoelementy

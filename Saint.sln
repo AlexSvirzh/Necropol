@@ -7,8 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 	ProjectSection(SolutionItems) = preProject
 		Index.html = Index.html
 		Info.html = Info.html
+		info.css = info.css
 		Script1.js = Script1.js
-		StyleSheet.css = StyleSheet.css
+		main.css = main.css
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "photo", "photo", "{0131A9F6-6EA2-480C-B458-8963D8546942}"
