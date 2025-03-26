@@ -14,24 +14,25 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('menu-toggle').checked = false; 
         });
     });
+    const scrollTopButton = document.getElementById("scrollTopButton");
+
 
     function scrollToTop() {
-        window.scrollTo({
+        document.documentElement.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth' 
         });
     }
 
-
-    window.onscroll = function () { scrollFunction() };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("scrollTopButton").style.opacity = "1";
-            document.getElementById("scrollTopButton").style.visibility = "visible";
+    window.addEventListener('scroll', function() {
+        if (document.documentElement.scrollTop > 20) {
+            scrollTopButton.style.opacity = "1";
+            scrollTopButton.style.visibility = "visible";
         } else {
-            document.getElementById("scrollTopButton").style.opacity = "0";
-            document.getElementById("scrollTopButton").style.visibility = "hidden";
+            scrollTopButton.style.opacity = "0";
+            scrollTopButton.style.visibility = "hidden";
         }
-    }
+    });
+
+    scrollTopButton.addEventListener('click', scrollToTop);
 });
