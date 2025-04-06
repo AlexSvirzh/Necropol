@@ -282,6 +282,38 @@ a:hover {
     border-radius: 5px;
 }
 
+.poet_text h3 + ul, 
+.poet_text p + ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.poet_text li {
+    position: relative;
+    padding-left: 1.8em;
+    margin-bottom: 0.6em;
+    text-align: left;
+}
+
+.poet-text li::before {
+    content: '–'; 
+    position: absolute;
+    left: 0.5em; 
+    top: 1px;    
+    color: #daa520; 
+    font-weight: bold;
+    font-size: 1.1em; 
+}
+
+.poet-section h3 {
+    color: #e0e0e0; 
+    border-bottom: 1px solid #555; 
+    padding-bottom: 0.4em;
+    margin-bottom: 1em; 
+}
+
 #scrollTopButton {
     display: flex;
     align-items: center;
