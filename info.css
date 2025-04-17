@@ -1,56 +1,63 @@
 ﻿body {
     font-family: 'Roboto', sans-serif;
-    background-color: #333;
-    color: #eee;
+    background-color: #dde5d8; /* Soft green background */
+    color: #343a40;
     line-height: 1.6;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 .button_back {
     width: auto;
-    min-width: 120px;
+    min-width: 100px;
     height: auto;
-    padding: 15px 25px;
-    margin: 0px 10px 10px 10px;
-    background: #4A4A4A;
-    color: #f0f0f0;
-    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0;
+    background: #e9ecef; /* Neutral light grey */
+    color: #495057;
+    font-size: 15px;
     text-align: center;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ced4da;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 20px;
-    left: 10px;
-    z-index: 1002;
     position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1002;
 }
 
 .button_back:hover {
     background: #daa520;
-    transform: scale(1.05);
+    color: #ffffff;
+    transform: scale(1.03);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+    border-color: #daa520;
 }
 
 .menu-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     z-index: 1001;
     transition: all 0.3s ease;
+    background-color: rgba(244, 246, 243, 0.9); /* #f4f6f3 background semi-transparent*/
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #d8dcd6; /* Adjusted border */
 }
 
 .menu-btn--scrolled {
-    transform: scale(0.8);
-    opacity: 0.5;
+    transform: scale(0.9);
+    opacity: 0.8;
 }
 
 
@@ -59,20 +66,21 @@
 .menu-btn>span::after {
     display: block;
     position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color: #f0f0f0;
-    transition-duration: .25s;
+    width: 20px;
+    height: 2px;
+    background-color: #343a40;
+    transition: all .25s ease-in-out;
+    border-radius: 1px;
 }
 
 .menu-btn>span::before {
     content: '';
-    top: -10px;
+    top: -6px;
 }
 
 .menu-btn>span::after {
     content: '';
-    top: 10px;
+    top: 6px;
 }
 
 .menubox {
@@ -80,31 +88,33 @@
     position: fixed;
     visibility: hidden;
     top: 0;
-    left: -100%;
+    right: -100%;
+    left: auto;
     width: 300px;
     max-width: 80%;
     height: 100%;
     margin: 0;
-    padding: 80px 0 20px 0;
+    padding: 70px 0 20px 0;
     list-style: none;
-    background-color: rgba(40, 40, 40, 0.98);
-    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.5);
+    background-color: #f4f6f3; /* #f4f6f3 background */
+    box-shadow: -4px 0px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     z-index: 1000;
     overflow-y: auto;
+    border-left: 1px solid #d8dcd6; /* Adjusted border */
 }
 
 .menu-item {
     display: block;
     padding: 15px 30px;
-    color: #f0f0f0;
+    color: #495057;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: normal;
     text-decoration: none;
     transition: background-color 0.25s ease, color 0.25s ease;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #e9ecef; /* Lighter border inside menu */
     position: relative;
     overflow: hidden;
 }
@@ -118,24 +128,27 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 5px;
+    width: 4px;
     height: 100%;
-    background-color: #f0f0f0;
-    transform: translateX(-100%);
+    background-color: #daa520;
+    transform: scaleY(0);
+    transform-origin: bottom;
     transition: transform 0.3s ease;
 }
 
 .menu-item:hover::before {
-    transform: translateX(0)
+    transform: scaleY(1);
+    transform-origin: top;
 }
 
 .menu-item:hover {
-    background-color: #daa520;
-    color: #333;
+    background-color: #e9ecef; /* Neutral light grey hover */
+    color: #212529;
 }
 
 #menu-toggle {
     opacity: 0;
+    position: absolute;
 }
 
 #menu-toggle:checked~.menu-btn>span {
@@ -144,76 +157,85 @@
 
 #menu-toggle:checked~.menu-btn>span::before {
     top: 0;
-    transform: rotate(0);
+    opacity: 0;
 }
 
 #menu-toggle:checked~.menu-btn>span::after {
     top: 0;
-    transform: rotate(90deg);
-}
-
-#menu-toggle:checked ~ .menu-btn {
-    background-color: transparent; 
+    transform: rotate(-90deg);
 }
 
 #menu-toggle:checked~.menubox {
     visibility: visible;
-    left: 0;
+    right: 0;
     transform: translateX(0%);
 }
 
 .cemetery-section,
 .poet-section {
-    margin-bottom: 3em;
-    padding: 1.5em;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    max-width: 1200px;
-    margin: 0 auto 3em auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 2.5em;
+    padding: 2em;
+    background-color: #f4f6f3; /* #f4f6f3 background */
+    border-radius: 8px;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #d8dcd6; /* Adjusted border */
+}
+
+.cemetery-section:first-of-type {
+    margin-top: 2em;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: 1em;
-    color: #fff;
+    color: #212529;
     text-align: center;
     border-bottom: 2px solid #daa520;
     padding-bottom: 0.5em;
+    font-weight: 700;
 }
 
 h2 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
-    color: #ddd;
+    font-size: 1.8em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    color: #343a40;
+    font-weight: 700;
 }
 
 h3 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-    color: #ccc;
+    font-size: 1.4em;
+    margin-bottom: 0.6em;
+    color: #495057;
+    font-weight: 700;
 }
 
 p {
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
     text-align: justify;
+    color: #343a40;
 }
 
 a {
-    color: #bbb;
+    color: #0d6efd;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
     color: #daa520;
+    text-decoration: underline;
 }
 
 .intro {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-bottom: 2em;
 }
 
 .text_intro {
@@ -222,8 +244,9 @@ a:hover {
 }
 
 .map_min {
-    width: 50%;
-    max-width: 600px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 450px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -234,7 +257,8 @@ a:hover {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d8dcd6; /* Adjusted border */
 }
 
 .map-buttons {
@@ -243,8 +267,9 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    background-color: #e9ecef; /* Neutral light grey */
+    border: 1px solid #ced4da;
     border-radius: 5px;
     margin-top: 10px;
 }
@@ -253,23 +278,21 @@ a:hover {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 5px;
-    border: 1px solid #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    border: 1px solid #ced4da;
+    background-color: #f4f6f3; /* #f4f6f3 background */
+    color: #495057;
     cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-    font-size: 14px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    font-size: 13px;
     font-weight: bold;
-    text-align: stretch;
+    text-align: center;
     overflow: hidden;
-    margin-bottom: 5px;
-    min-width: 80px;
+    margin-bottom: 8px;
+    min-width: auto;
     word-break: keep-all;
     white-space: nowrap;
-    align-self: center;
 }
 
 .map-buttons button:last-child {
@@ -282,22 +305,17 @@ a:hover {
 
 
 .map-buttons button:hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.map_min .btn1_n,
-.map_min .btn2_n,
-.map_min .btn3_n {
-    top: auto;
-    left: auto;
+    background-color: #daa520;
+    border-color: #daa520;
+    color: #ffffff;
 }
 
 .poet {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-top: 1.5em;
 }
 
 .poet_text {
@@ -309,18 +327,20 @@ a:hover {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     min-width: 200px;
+    max-width: 350px;
 }
 
 .poet_img img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
+    border: 1px solid #d8dcd6; /* Adjusted border */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.poet_text h3+ul,
-.poet_text p+ul {
+.poet_text ul {
     list-style: none;
     padding-left: 0;
     margin-top: 0.5em;
@@ -330,23 +350,23 @@ a:hover {
 .poet_text li {
     position: relative;
     padding-left: 1.8em;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.7em;
     text-align: left;
 }
 
-.poet-text li::before {
-    content: '–';
+.poet_text li::before {
+    content: '•';
     position: absolute;
     left: 0.5em;
     top: 1px;
     color: #daa520;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
 .poet-section h3 {
-    color: #e0e0e0;
-    border-bottom: 1px solid #555;
+    color: #495057;
+    border-bottom: 1px solid #e9ecef;
     padding-bottom: 0.4em;
     margin-bottom: 1em;
 }
@@ -356,48 +376,37 @@ a:hover {
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 25px;
+    right: 25px;
     z-index: 999;
     opacity: 0;
     visibility: hidden;
     cursor: pointer;
     border: none;
     outline: none;
-    background-color: rgba(30, 30, 30, 0.7);
+    background-color: rgba(108, 117, 125, 0.8);
     color: #FFFFFF;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 #scrollTopButton:hover {
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: rgba(52, 58, 64, 0.9);
+    transform: scale(1.1);
 }
 
 .arrow-up-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     fill: currentColor;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.button_back,
-.cemetery-section,
-.poet-section {
-    animation: fadeIn 0.5s ease forwards;
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 html {
@@ -407,47 +416,75 @@ html {
 .main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
 }
 
 @media (max-width: 768px) {
-    .intro {
+    .intro, .poet {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
 
-    .poet {
-        flex-direction: column;
-    }
-
-    .text_intro {
+    .text_intro, .map_min, .poet_text, .poet_img {
         width: 100%;
         min-width: auto;
-    }
-
-    .map_min {
-        width: 100%;
         max-width: none;
+        flex: none;
     }
 
-    .poet_text,
-    .poet_img {
-        width: 100%;
-        min-width: auto;
-    }
+    .map_min { order: 2; }
+    .text_intro { order: 1; }
+    .poet_img { order: 2; max-width: 300px; align-self: center; }
+    .poet_text { order: 1; }
+
 
     .map-buttons {
-        margin-top: 10px;
+        margin-top: 15px;
         width: 100%;
     }
 
     .map-buttons button {
-        font-size: 13px;
-        min-width: auto;
-        width: 100%;
-        border-width: 1px;
-        display: block;
-        margin: 5px auto;
-        align-self: stretch;
+        font-size: 12px;
+        padding: 6px 10px;
     }
+
+    .main {
+        padding: 15px 15px 30px 15px;
+    }
+
+    .cemetery-section, .poet-section {
+        padding: 1.5em;
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.6em; }
+    h3 { font-size: 1.3em; }
+
+    .button_back {
+        padding: 8px 15px;
+        font-size: 14px;
+        top: 15px;
+        left: 15px;
+    }
+    .menu-btn {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+     .menu-btn > span { width: 18px; }
+     .menu-btn > span::before { top: -5px; }
+     .menu-btn > span::after { top: 5px; }
+
+     .menubox { padding-top: 60px; }
+     .menu-item { font-size: 16px; padding: 12px 25px; }
+
+     #scrollTopButton {
+         width: 40px;
+         height: 40px;
+         bottom: 15px;
+         right: 15px;
+     }
+     .arrow-up-icon { width: 18px; height: 18px; }
 }
