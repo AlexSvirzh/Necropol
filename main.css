@@ -1,5 +1,5 @@
-﻿body {
-    background: #e9ecef;
+body {
+    background: #c0b7b1;
     color: #343a40;
     margin: 0;
     padding: 0;
@@ -50,7 +50,7 @@
 
 .header__subtitle {
     font-size: 18px;
-    color: #6c757d;
+    color: #433e3f;
     margin: 0;
     line-height: 1.4;
 }
