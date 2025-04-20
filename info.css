@@ -302,52 +302,52 @@ p {
 
 /* Адаптивность */
 @media (max-width: 768px) {
-  .main {
-    padding: 20px 15px;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.6rem;
-  }
-  
-  .intro, .poet {
-    flex-direction: column;
-  }
-  
-  .map_min, .poet_img {
-    order: 2;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .text_intro, .poet_text {
-    order: 1;
-  }
-  
-  .button_back, .menu-btn {
-    top: 15px;
-  }
-  
-  .button_back {
-    left: 15px;
-    padding: 8px 15px;
-  }
-  
-  .menu-btn {
-    right: 15px;
-    width: 45px;
-    height: 45px;
-  }
-  
-  #scrollTopButton {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-  }
+    .main {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    .intro, .poet {
+        flex-direction: column;
+    }
+    
+    .map_min, .poet_img {
+        order: 2;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .text_intro, .poet_text {
+        order: 1;
+    }
+    
+    .button_back, .menu-btn {
+        top: 15px;
+    }
+    
+    .button_back {
+        left: 15px;
+        padding: 10px 20px;
+    }
+    
+    .menu-btn {
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    #scrollTopButton {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
 }
