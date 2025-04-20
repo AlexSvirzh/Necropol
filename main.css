@@ -24,7 +24,7 @@ body {
     text-align: center;
     z-index: 10;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #7A7265;
     transition: background-color 0.3s ease;
 }
 
