@@ -1,504 +1,353 @@
-﻿body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #dde5d8; 
-    color: #343a40;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+:root {
+  --primary-bg: #f8f9fa;
+  --secondary-bg: #e9ecef;
+  --text-dark: #343a40;
+  --text-medium: #495057;
+  --text-light: #6c757d;
+  --accent-gold: #daa520;
+  --border-color: #ced4da;
+  --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Кнопка "Назад" */
 .button_back {
-    width: auto;
-    min-width: 100px;
-    height: auto;
-    padding: 10px 20px;
-    margin: 0;
-    background: #e9ecef; 
-    color: #495057;
-    font-size: 15px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ced4da;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    font-family: 'Roboto', sans-serif;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1002;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1002;
+  padding: 10px 20px;
+  background: var(--secondary-bg);
+  color: var(--text-medium);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .button_back:hover {
-    background: #daa520;
-    color: #ffffff;
-    transform: scale(1.03);
-    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
-    border-color: #daa520;
+  background: var(--accent-gold);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(218, 165, 32, 0.2);
+  border-color: var(--accent-gold);
 }
 
+/* Бургер-меню */
 .menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 1001;
-    transition: all 0.3s ease;
-    background-color: rgba(244, 246, 243, 0.9); 
-    border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border: 1px solid #d8dcd6; 
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
-.menu-btn--scrolled {
-    transform: scale(0.9);
-    opacity: 0.8;
+.menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-dark);
+  margin: 4px 0;
+  transition: var(--transition);
 }
 
-
-.menu-btn>span,
-.menu-btn>span::before,
-.menu-btn>span::after {
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 2px;
-    background-color: #343a40;
-    transition: all .25s ease-in-out;
-    border-radius: 1px;
+#menu-toggle:checked ~ .menu-btn span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
 }
 
-.menu-btn>span::before {
-    content: '';
-    top: -6px;
+#menu-toggle:checked ~ .menu-btn span:nth-child(2) {
+  opacity: 0;
 }
 
-.menu-btn>span::after {
-    content: '';
-    top: 6px;
+#menu-toggle:checked ~ .menu-btn span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
+/* Боковое меню */
 .menubox {
-    display: block;
-    position: fixed;
-    visibility: hidden;
-    top: 0;
-    right: -100%;
-    left: auto;
-    width: 300px;
-    max-width: 80%;
-    height: 100%;
-    margin: 0;
-    padding: 70px 0 20px 0;
-    list-style: none;
-    background-color: #f4f6f3; 
-    box-shadow: -4px 0px 15px rgba(0, 0, 0, 0.1);
-    animation: slideInRight 0.35s ease forwards;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    transform: translateX(100%);
-    z-index: 1000;
-    overflow-y: auto;
-    border-left: 1px solid #d8dcd6; 
-    backdrop-filter: blur(6px);
-    
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  max-width: 90%;
+  height: 100vh;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: right 0.4s ease;
+  padding: 80px 0 20px;
+  overflow-y: auto;
+}
+
+#menu-toggle:checked ~ .menubox {
+  right: 0;
 }
 
 .menu-item {
-    display: block;
-    padding: 15px 30px;
-    color: #495057;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-    text-decoration: none;
-    transition: background-color 0.25s ease, color 0.25s ease;
-    border-bottom: 1px solid #e9ecef; 
-    position: relative;
-    overflow: hidden;
-}
-
-.menu-item:last-child {
-    border-bottom: none;
-}
-
-.menu-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 4px;
-    height: 100%;
-    background-color: #daa520;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease;
-}
-
-.menu-item:hover::before {
-    transform: scaleY(1);
-    transform-origin: top;
+  display: block;
+  padding: 15px 30px;
+  color: var(--text-dark);
+  font-size: 18px;
+  text-decoration: none;
+  transition: var(--transition);
+  position: relative;
+  border-left: 4px solid transparent;
 }
 
 .menu-item:hover {
-    background-color: #e9ecef; 
-    color: #212529;
+  background: rgba(0,0,0,0.03);
+  color: var(--accent-gold);
+  border-left-color: var(--accent-gold);
 }
 
-#menu-toggle {
-    opacity: 0;
-    position: absolute;
-}
-
-#menu-toggle:checked~.menu-btn>span {
-    transform: rotate(45deg);
-}
-
-#menu-toggle:checked~.menu-btn>span::before {
-    top: 0;
-    opacity: 0;
-}
-
-#menu-toggle:checked~.menu-btn>span::after {
-    top: 0;
-    transform: rotate(-90deg);
-}
-
-#menu-toggle:checked~.menubox {
-    visibility: visible;
-    right: 0;
-    transform: translateX(0%);
-}
-
-.cemetery-section,
-.poet-section {
-    margin-bottom: 2.5em;
-    padding: 2em;
-    background-color: #f4f6f3; 
-    border-radius: 8px;
-    max-width: 1140px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    border: 1px solid #d8dcd6; 
-}
-
-.cemetery-section:first-of-type {
-    margin-top: 2em;
+/* Основной контент */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
 }
 
 h1 {
-    font-size: 2.2em;
-    margin-bottom: 1em;
-    color: #212529;
-    text-align: center;
-    border-bottom: 2px solid #daa520;
-    padding-bottom: 0.5em;
-    font-weight: 700;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--accent-gold);
+}
+
+.cemetery-section, .poet-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 h2 {
-    font-size: 1.8em;
-    margin-top: 1.5em;
-    margin-bottom: 0.8em;
-    color: #343a40;
-    font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--accent-gold);
 }
 
 h3 {
-    font-size: 1.4em;
-    margin-bottom: 0.6em;
-    color: #495057;
-    font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text-medium);
+  margin-bottom: 1rem;
 }
 
 p {
-    margin-bottom: 1.2em;
-    text-align: justify;
-    color: #343a40;
+  color: var(--text-medium);
+  margin-bottom: 1.5rem;
 }
 
-a {
-    color: #0d6efd;
-    text-decoration: none;
-    transition: color 0.3s ease;
+/* Блоки с контентом */
+.intro, .poet {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
 }
 
-a:hover {
-    color: #daa520;
-    text-decoration: underline;
+.text_intro, .poet_text {
+  flex: 2;
+  min-width: 300px;
 }
 
-.intro {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-bottom: 2em;
+.map_min, .poet_img {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.text_intro {
-    flex: 2;
-    min-width: 300px;
+.map_min img, .poet_img img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
-.map_min {
-    flex: 1;
-    min-width: 250px;
-    max-width: 450px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.map_min img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #d8dcd6; 
-}
-
+/* Кнопки карты */
 .map-buttons {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    background-color: #e9ecef; 
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
 }
 
 .map-buttons button {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    background-color: #f4f6f3; 
-    color: #495057;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-    font-size: 13px;
-    font-weight: bold;
-    text-align: center;
-    overflow: hidden;
-    margin-bottom: 8px;
-    min-width: auto;
-    word-break: keep-all;
-    white-space: nowrap;
+  padding: 10px 15px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-medium);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 14px;
+  text-align: center;
 }
-
-.map-buttons button:last-child {
-    margin-bottom: 0;
-}
-
-.map-buttons button span {
-    display: block;
-}
-
 
 .map-buttons button:hover {
-    background-color: #daa520;
-    border-color: #daa520;
-    color: #ffffff;
+  background: var(--accent-gold);
+  color: white;
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
 }
 
-.poet {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 1.5em;
-}
-
-.poet_text {
-    flex: 2;
-    min-width: 300px;
-}
-
-.poet_img {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    min-width: 200px;
-    max-width: 350px;
-}
-
-.poet_img img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    border: 1px solid #d8dcd6; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
+/* Список в тексте */
 .poet_text ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+  list-style: none;
+  padding-left: 0;
 }
 
 .poet_text li {
-    position: relative;
-    padding-left: 1.8em;
-    margin-bottom: 0.7em;
-    text-align: left;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
 }
 
 .poet_text li::before {
-    content: '•';
-    position: absolute;
-    left: 0.5em;
-    top: 1px;
-    color: #daa520;
-    font-weight: bold;
-    font-size: 1.2em;
+  content: '•';
+  position: absolute;
+  left: 1rem;
+  color: var(--accent-gold);
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
-.poet-section h3 {
-    color: #495057;
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 0.4em;
-    margin-bottom: 1em;
-}
-
+/* Кнопка "Наверх" */
 #scrollTopButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background-color: rgba(108, 117, 125, 0.8);
-    color: #FFFFFF;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s, transform 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent-gold);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--card-shadow);
+  z-index: 999;
+}
+
+#scrollTopButton.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 #scrollTopButton:hover {
-    background-color: rgba(52, 58, 64, 0.9);
-    transform: scale(1.1);
+  transform: translateY(-5px);
+  background: var(--text-dark);
 }
 
-.arrow-up-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-.main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 20px 40px 20px;
-}
-
+/* Адаптивность */
 @media (max-width: 768px) {
-    .intro, .poet {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .text_intro, .map_min, .poet_text, .poet_img {
-        width: 100%;
-        min-width: auto;
-        max-width: none;
-        flex: none;
-    }
-
-    .map_min { order: 2; }
-    .text_intro { order: 1; }
-    .poet_img { order: 2; max-width: 300px; align-self: center; }
-    .poet_text { order: 1; }
-
-
-    .map-buttons {
-        margin-top: 15px;
-        width: 100%;
-    }
-
-    .map-buttons button {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-
-    .main {
-        padding: 15px 15px 30px 15px;
-    }
-
-    .cemetery-section, .poet-section {
-        padding: 1.5em;
-    }
-
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.6em; }
-    h3 { font-size: 1.3em; }
-
-    .button_back {
-        padding: 8px 15px;
-        font-size: 14px;
-        top: 15px;
-        left: 15px;
-    }
-    .menu-btn {
-        top: 15px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-    }
-     .menu-btn > span { width: 18px; }
-     .menu-btn > span::before { top: -5px; }
-     .menu-btn > span::after { top: 5px; }
-
-     .menubox { padding-top: 60px; }
-     .menu-item { font-size: 16px; padding: 12px 25px; }
-
-     #scrollTopButton {
-         width: 40px;
-         height: 40px;
-         bottom: 15px;
-         right: 15px;
-     }
-     .arrow-up-icon { width: 18px; height: 18px; }
+  .main {
+    padding: 20px 15px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  .intro, .poet {
+    flex-direction: column;
+  }
+  
+  .map_min, .poet_img {
+    order: 2;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .text_intro, .poet_text {
+    order: 1;
+  }
+  
+  .button_back, .menu-btn {
+    top: 15px;
+  }
+  
+  .button_back {
+    left: 15px;
+    padding: 8px 15px;
+  }
+  
+  .menu-btn {
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  #scrollTopButton {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
 }
