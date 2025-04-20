@@ -1,6 +1,6 @@
 ﻿body {
     font-family: 'Roboto', sans-serif;
-    background-color: #dde5d8; /* Soft green background */
+    background-color: #dde5d8; 
     color: #343a40;
     line-height: 1.6;
     margin: 0;
@@ -13,7 +13,7 @@
     height: auto;
     padding: 10px 20px;
     margin: 0;
-    background: #e9ecef; /* Neutral light grey */
+    background: #e9ecef; 
     color: #495057;
     font-size: 15px;
     text-align: center;
@@ -49,10 +49,10 @@
     cursor: pointer;
     z-index: 1001;
     transition: all 0.3s ease;
-    background-color: rgba(244, 246, 243, 0.9); /* #f4f6f3 background semi-transparent*/
+    background-color: rgba(244, 246, 243, 0.9); 
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border: 1px solid #d8dcd6; /* Adjusted border */
+    border: 1px solid #d8dcd6; 
 }
 
 .menu-btn--scrolled {
@@ -96,13 +96,16 @@
     margin: 0;
     padding: 70px 0 20px 0;
     list-style: none;
-    background-color: #f4f6f3; /* #f4f6f3 background */
+    background-color: #f4f6f3; 
     box-shadow: -4px 0px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    animation: slideInRight 0.35s ease forwards;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
     transform: translateX(100%);
     z-index: 1000;
     overflow-y: auto;
-    border-left: 1px solid #d8dcd6; /* Adjusted border */
+    border-left: 1px solid #d8dcd6; 
+    backdrop-filter: blur(6px);
+    
 }
 
 .menu-item {
@@ -114,7 +117,7 @@
     font-weight: normal;
     text-decoration: none;
     transition: background-color 0.25s ease, color 0.25s ease;
-    border-bottom: 1px solid #e9ecef; /* Lighter border inside menu */
+    border-bottom: 1px solid #e9ecef; 
     position: relative;
     overflow: hidden;
 }
@@ -142,7 +145,7 @@
 }
 
 .menu-item:hover {
-    background-color: #e9ecef; /* Neutral light grey hover */
+    background-color: #e9ecef; 
     color: #212529;
 }
 
@@ -175,13 +178,13 @@
 .poet-section {
     margin-bottom: 2.5em;
     padding: 2em;
-    background-color: #f4f6f3; /* #f4f6f3 background */
+    background-color: #f4f6f3; 
     border-radius: 8px;
     max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    border: 1px solid #d8dcd6; /* Adjusted border */
+    border: 1px solid #d8dcd6; 
 }
 
 .cemetery-section:first-of-type {
@@ -258,7 +261,7 @@ a:hover {
     height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
-    border: 1px solid #d8dcd6; /* Adjusted border */
+    border: 1px solid #d8dcd6; 
 }
 
 .map-buttons {
@@ -268,7 +271,7 @@ a:hover {
     flex-direction: column;
     align-items: stretch;
     padding: 10px;
-    background-color: #e9ecef; /* Neutral light grey */
+    background-color: #e9ecef; 
     border: 1px solid #ced4da;
     border-radius: 5px;
     margin-top: 10px;
@@ -281,7 +284,7 @@ a:hover {
     padding: 8px 12px;
     border-radius: 5px;
     border: 1px solid #ced4da;
-    background-color: #f4f6f3; /* #f4f6f3 background */
+    background-color: #f4f6f3; 
     color: #495057;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
@@ -336,7 +339,7 @@ a:hover {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-    border: 1px solid #d8dcd6; /* Adjusted border */
+    border: 1px solid #d8dcd6; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -407,6 +410,17 @@ a:hover {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 html {
