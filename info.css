@@ -1,10 +1,12 @@
 body {
     background: #F5F3F1;
-    color: #433E3F;
+    color: #000000;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
+    text-align: justify;
+    hyphens: auto;
 }
 
 .page {
@@ -169,6 +171,7 @@ h2 {
     position: relative;
     padding-bottom: 0.5rem;
     font-weight: 600;
+    text-align: left;
 }
 
 h2::after {
@@ -186,11 +189,15 @@ h3 {
     color: #433E3F;
     margin-bottom: 1rem;
     font-weight: 500;
+    text-align: left;
 }
 
 p {
-    color: #7A7265;
+    color: #000000;
     margin-bottom: 1.5rem;
+    text-align: justify;
+    text-justify: inter-word;
+    word-spacing: -0.05em;
 }
 
 /* Блоки с контентом */
@@ -261,7 +268,8 @@ p {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 0.8rem;
-    color: #7A7265;
+    color: #000000;
+    text-align: justify;
 }
 
 .poet_text li::before {
@@ -307,6 +315,16 @@ p {
 
 /* Адаптивность */
 @media (max-width: 768px) {
+    body, p, .poet_text li {
+        text-align: left;
+        hyphens: manual;
+    }
+    
+    p {
+        letter-spacing: 0.02em;
+        word-spacing: normal;
+    }
+    
     .main {
         padding: 20px 15px;
     }
