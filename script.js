@@ -4,17 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menu-toggle');
     const scrollTopButton = document.getElementById("scrollTopButton");
 
-    if (menuBtn && menuToggle) {
-        menuBtn.addEventListener('click', function (event) {
-            event.preventDefault();
-            menuToggle.checked = !menuToggle.checked;
-        });
-    }
-
     document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', () => {
             if (menuToggle) {
-                menuToggle.checked = false;
+                menuToggle.checked = false; 
             }
         });
     });
@@ -50,3 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+function scrollToTop() {
+    window.scrollTo({
+        top:0,
+        behavior: 'smooth'
+    });
+}
